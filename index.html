@@ -1,0 +1,62 @@
+<html ng-app="myApp">
+
+<head>
+    <title> GitHub Profiler </title>
+
+    <!--- Latest Angular --->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+
+    <!--- Bootstrap --->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--- My JavaScript --->
+    <script src="script.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <p>
+        <div class="well well-lg">
+            <h1 id="title">GitHub Profiler</h1>
+            <h3> Find out information about any GitHub user!</h3>
+        </div>
+        <div ng-controller="myController as vm">
+            <div class="col">
+                <div class="input-group">
+                    <input type="text" id="userName" ng-model="vm.userName" class="form-control" placeholder="Enter Github Username...">
+                    <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="vm.getUserInfo()" type="button">Go!</button>
+              </span>
+                </div>
+            </div>
+            <p>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3">
+                        <img ng-src="{{ vm.user.avatar_url }}" class="img-circle" width="100px">
+                        <hr>
+                        <a ng-href="{{ vm.user.html_url }}">{{ vm.user.login }} - {{ vm.userName }}</a><br> Location: {{ vm.user.location }} <br>Hirable: {{ vm.user.hireable }}<br> Slangin' dat code since: {{ vm.user.created_at | date }}
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="well">
+                            <h5>Followers:</h5><br> {{ vm.user.followers }}
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="well">
+                            <h5>Following:</h5><br> {{ vm.user.following }}
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="well">
+                            <h5>Public Repos:</h5><br> {{ vm.user.public_repos }}
+                        </div>
+                    </div>
+                </div>
+        </div>
+</body>
+
+</html>
